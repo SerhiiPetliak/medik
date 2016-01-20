@@ -127,14 +127,40 @@ class PeoplesController extends Controller
      * Lists all Peoples models.
      * @return mixed
      */
-    public function actionFlu($streetId,$yearVal)
+    public function actionFlu()
     {
-        $peoplesArr = Peoples::find()->where(['peopleStreet' => $streetId])->andWhere('peopleFluTerm>'.$yearVal)->all();
+        $model = new Peoples;
         
         return $this->render('flu', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'model' => $model,
+        ]);
+    }
+    /**
+     * Lists all Peoples models.
+     * @return mixed
+     */
+    public function actionFluFind()
+    {
+        
+        return $this->render('fluFind', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+    /*
+     public function actionFluFind($streetId,$yearVal)
+    {
+        $model = new Peoples;
+        $peoplesArr = Peoples::find()->where(['peopleStreet' => $streetId])->andWhere('peopleFluTerm>'.$yearVal)->all();
+        
+        return $this->render('fluFind', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'model' => $model,
             'dt' => $peoplesArr,
         ]);
     }
+     */
 }

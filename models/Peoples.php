@@ -24,6 +24,9 @@ use Yii;
  */
 class Peoples extends \yii\db\ActiveRecord
 {
+    public $streetId;
+    public $yearVal;
+    
     /**
      * @inheritdoc
      */
@@ -39,7 +42,7 @@ class Peoples extends \yii\db\ActiveRecord
     {
         return [
             [['peopleFIO', 'peopleBirthday', 'peopleWorking', 'peopleFluNumber', 'peopleFluDate', 'peopleFluResult', 'peopleFluTerm', 'peopleStreet'], 'required'],
-            [['peopleBirthday', 'peopleFluDate'], 'safe'],
+            [['peopleBirthday', 'peopleFluDate','streetId','yearVal'], 'safe'],
             [['peopleWorking', 'peopleFluResult', 'peopleFluTerm', 'peopleStreet'], 'integer'],
             [['peopleFIO', 'peopleFluNumber'], 'string', 'max' => 255]
         ];

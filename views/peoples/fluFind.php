@@ -18,9 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php
         //var_dump($dt);
     ?>
-    <?= $this->render('_findForm', [
-            'model' => $model
-    ]) ?>
+    
 
     
 
