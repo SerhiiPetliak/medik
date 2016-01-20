@@ -29,6 +29,8 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'peopleFluResult') ?>
 
+    <?php // echo $form->field($model, 'peopleFluTerm') ?>
+
     <?php // echo $form->field($model, 'peopleStreet') ?>
 
     <div class="form-group">

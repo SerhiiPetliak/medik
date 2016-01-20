@@ -81,7 +81,12 @@ class PeoplesController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            
+            $currentYear = date('Y');
+            $model->peopleFluTerm = $currentYear - date('Y', strtotime($model->peopleFluDate)); //Вычисляю разницу текущего года и даты флюры
+            $model->save();
+            
             return $this->redirect(['view', 'id' => $model->peopleId]);
         } else {
             return $this->render('update', [
@@ -117,5 +122,19 @@ class PeoplesController extends Controller
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    }
+    /**
+     * Lists all Peoples models.
+     * @return mixed
+     */
+    public function actionFlu($streetId,$yearVal)
+    {
+        $peoplesArr = Peoples::find()->where(['peopleStreet' => $streetId])->andWhere('peopleFluTerm>'.$yearVal)->all();
+        
+        return $this->render('flu', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'dt' => $peoplesArr,
+        ]);
     }
 }

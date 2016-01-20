@@ -24,6 +24,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'peopleFluResult')->textInput() ?>
 
+    <?= $form->field($model, 'peopleFluTerm')->textInput() ?>
+
     <?= $form->field($model, 'peopleStreet')->textInput() ?>
 
     <div class="form-group">

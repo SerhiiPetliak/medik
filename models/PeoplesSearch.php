@@ -18,7 +18,7 @@ class PeoplesSearch extends Peoples
     public function rules()
     {
         return [
-            [['peopleId', 'peopleWorking', 'peopleFluResult', 'peopleStreet'], 'integer'],
+            [['peopleId', 'peopleWorking', 'peopleFluResult', 'peopleFluTerm', 'peopleStreet'], 'integer'],
             [['peopleFIO', 'peopleBirthday', 'peopleFluNumber', 'peopleFluDate'], 'safe'],
         ];
     }
@@ -61,6 +61,7 @@ class PeoplesSearch extends Peoples
             'peopleWorking' => $this->peopleWorking,
             'peopleFluDate' => $this->peopleFluDate,
             'peopleFluResult' => $this->peopleFluResult,
+            'peopleFluTerm' => $this->peopleFluTerm,
             'peopleStreet' => $this->peopleStreet,
         ]);
 

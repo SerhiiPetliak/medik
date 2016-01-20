@@ -14,6 +14,7 @@ use Yii;
  * @property string $peopleFluNumber
  * @property string $peopleFluDate
  * @property integer $peopleFluResult
+ * @property integer $peopleFluTerm
  * @property integer $peopleStreet
  *
  * @property ChronicDiseasesPeoples[] $chronicDiseasesPeoples
@@ -37,9 +38,9 @@ class Peoples extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['peopleFIO', 'peopleBirthday', 'peopleWorking', 'peopleFluNumber', 'peopleFluDate', 'peopleFluResult', 'peopleStreet'], 'required'],
+            [['peopleFIO', 'peopleBirthday', 'peopleWorking', 'peopleFluNumber', 'peopleFluDate', 'peopleFluResult', 'peopleFluTerm', 'peopleStreet'], 'required'],
             [['peopleBirthday', 'peopleFluDate'], 'safe'],
-            [['peopleWorking', 'peopleFluResult', 'peopleStreet'], 'integer'],
+            [['peopleWorking', 'peopleFluResult', 'peopleFluTerm', 'peopleStreet'], 'integer'],
             [['peopleFIO', 'peopleFluNumber'], 'string', 'max' => 255]
         ];
     }
@@ -57,6 +58,7 @@ class Peoples extends \yii\db\ActiveRecord
             'peopleFluNumber' => 'People Flu Number',
             'peopleFluDate' => 'People Flu Date',
             'peopleFluResult' => 'People Flu Result',
+            'peopleFluTerm' => 'People Flu Term',
             'peopleStreet' => 'People Street',
         ];
     }

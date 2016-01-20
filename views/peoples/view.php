@@ -35,6 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'peopleFluNumber',
             'peopleFluDate',
             'peopleFluResult',
+            'peopleFluTerm',
             'peopleStreet',
         ],
     ]) ?>
