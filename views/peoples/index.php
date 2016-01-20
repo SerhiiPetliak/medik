@@ -29,7 +29,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'peopleFIO',
             'peopleBirthday',
             'peopleWorking',
-            'peopleFlu',
+            //'peopleFluNumber',
+            // 'peopleFluDate',
+            // 'peopleFluResult',
             // 'peopleStreet',
 
             ['class' => 'yii\grid\ActionColumn'],

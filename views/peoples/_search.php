@@ -23,7 +23,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'peopleWorking') ?>
 
-    <?= $form->field($model, 'peopleFlu') ?>
+    <?= $form->field($model, 'peopleFluNumber') ?>
+
+    <?php // echo $form->field($model, 'peopleFluDate') ?>
+
+    <?php // echo $form->field($model, 'peopleFluResult') ?>
 
     <?php // echo $form->field($model, 'peopleStreet') ?>
 

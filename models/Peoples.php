@@ -11,13 +11,14 @@ use Yii;
  * @property string $peopleFIO
  * @property string $peopleBirthday
  * @property integer $peopleWorking
- * @property integer $peopleFlu
+ * @property string $peopleFluNumber
+ * @property string $peopleFluDate
+ * @property integer $peopleFluResult
  * @property integer $peopleStreet
  *
  * @property ChronicDiseasesPeoples[] $chronicDiseasesPeoples
  * @property GraftsPeoples[] $graftsPeoples
  * @property Streets $peopleStreet0
- * @property Flu $peopleFlu0
  * @property Working $peopleWorking0
  */
 class Peoples extends \yii\db\ActiveRecord
@@ -36,10 +37,10 @@ class Peoples extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['peopleFIO', 'peopleBirthday', 'peopleWorking', 'peopleFlu', 'peopleStreet'], 'required'],
-            [['peopleBirthday'], 'safe'],
-            [['peopleWorking', 'peopleFlu', 'peopleStreet'], 'integer'],
-            [['peopleFIO'], 'string', 'max' => 255]
+            [['peopleFIO', 'peopleBirthday', 'peopleWorking', 'peopleFluNumber', 'peopleFluDate', 'peopleFluResult', 'peopleStreet'], 'required'],
+            [['peopleBirthday', 'peopleFluDate'], 'safe'],
+            [['peopleWorking', 'peopleFluResult', 'peopleStreet'], 'integer'],
+            [['peopleFIO', 'peopleFluNumber'], 'string', 'max' => 255]
         ];
     }
 
@@ -53,7 +54,9 @@ class Peoples extends \yii\db\ActiveRecord
             'peopleFIO' => 'People Fio',
             'peopleBirthday' => 'People Birthday',
             'peopleWorking' => 'People Working',
-            'peopleFlu' => 'People Flu',
+            'peopleFluNumber' => 'People Flu Number',
+            'peopleFluDate' => 'People Flu Date',
+            'peopleFluResult' => 'People Flu Result',
             'peopleStreet' => 'People Street',
         ];
     }
@@ -80,14 +83,6 @@ class Peoples extends \yii\db\ActiveRecord
     public function getPeopleStreet0()
     {
         return $this->hasOne(Streets::className(), ['streetId' => 'peopleStreet']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getPeopleFlu0()
-    {
-        return $this->hasOne(Flu::className(), ['fluId' => 'peopleFlu']);
     }
 
     /**

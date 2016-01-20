@@ -18,8 +18,8 @@ class PeoplesSearch extends Peoples
     public function rules()
     {
         return [
-            [['peopleId', 'peopleWorking', 'peopleFlu', 'peopleStreet'], 'integer'],
-            [['peopleFIO', 'peopleBirthday'], 'safe'],
+            [['peopleId', 'peopleWorking', 'peopleFluResult', 'peopleStreet'], 'integer'],
+            [['peopleFIO', 'peopleBirthday', 'peopleFluNumber', 'peopleFluDate'], 'safe'],
         ];
     }
 
@@ -59,11 +59,13 @@ class PeoplesSearch extends Peoples
             'peopleId' => $this->peopleId,
             'peopleBirthday' => $this->peopleBirthday,
             'peopleWorking' => $this->peopleWorking,
-            'peopleFlu' => $this->peopleFlu,
+            'peopleFluDate' => $this->peopleFluDate,
+            'peopleFluResult' => $this->peopleFluResult,
             'peopleStreet' => $this->peopleStreet,
         ]);
 
-        $query->andFilterWhere(['like', 'peopleFIO', $this->peopleFIO]);
+        $query->andFilterWhere(['like', 'peopleFIO', $this->peopleFIO])
+            ->andFilterWhere(['like', 'peopleFluNumber', $this->peopleFluNumber]);
 
         return $dataProvider;
     }
