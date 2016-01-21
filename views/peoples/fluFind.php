@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use app\models\Streets;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\PeoplesSearch */
@@ -9,6 +10,14 @@ use yii\grid\GridView;
 
 $this->title = 'Поиск по дате';
 $this->params['breadcrumbs'][] = $this->title;
+
+function findStreet($id){
+    
+    $streetName = Streets::find()->where(['streetId' => $id])->one();
+    
+    return $streetName['streetName'];    
+}
+
 ?>
 <div class="peoples-index">
 
@@ -26,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
             echo "
                 <tr>
                     <td>".$d['peopleFIO']."</td>
-                    <td>".$d['peopleStreet']." ".$d['peopleAdress']."</td>
+                    <td>".findStreet($d['peopleStreet'])." ".$d['peopleAdress']."</td>
                     <td>".date('d-m-Y', strtotime($d['peopleFluDate']))."</td>
                 </tr>
             ";

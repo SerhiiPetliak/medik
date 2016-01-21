@@ -67,6 +67,7 @@ class Peoples extends \yii\db\ActiveRecord
             'peopleStreet' => 'People Street',
             'graft' => 'Прививки',
             'chronic' => 'Заболевания',
+            'peopleAdress' => 'Дом №',
         ];
     }
 

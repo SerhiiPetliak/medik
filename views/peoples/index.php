@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'peopleId',
             'peopleFIO',
             'peopleBirthday',
-            'peopleWorking',
+            'peopleWorking0.workingName',
             'peopleFluNumber',
             // 'peopleFluDate',
             // 'peopleFluResult',
@@ -74,10 +74,10 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'attribute' => 'peopleStreet',
-                'value' => 'peopleStreet',
+                'value' => 'peopleStreet0.streetName',
                 'filter' => ArrayHelper::map(Streets::find()->all(), 'streetId','streetName')
             ],
-
+            'peopleAdress',
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
