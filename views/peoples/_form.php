@@ -24,7 +24,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'peopleFluResult')->textInput() ?>
 
-    <?= $form->field($model, 'peopleFluTerm')->textInput() ?>
+    <?= $form->field($model, 'peopleFluTerm')->hiddenInput()->label(false) ?>
 
     <?= $form->field($model, 'peopleStreet')->textInput() ?>
 

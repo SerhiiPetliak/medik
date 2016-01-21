@@ -62,7 +62,10 @@ class PeoplesController extends Controller
     {
         $model = new Peoples();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            $currentYear = date('Y');
+            $model->peopleFluTerm = $currentYear - date('Y', strtotime($model->peopleFluDate)); //Вычисляю разницу текущего года и даты флюры
+            $model->save();
             return $this->redirect(['view', 'id' => $model->peopleId]);
         } else {
             return $this->render('create', [
@@ -124,43 +127,35 @@ class PeoplesController extends Controller
         }
     }
     /**
-     * Lists all Peoples models.
+     * Экшн вывода формы для поиска людей по улице и сроку флюры.
      * @return mixed
      */
     public function actionFlu()
     {
         $model = new Peoples;
         
-        return $this->render('flu', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-            'model' => $model,
-        ]);
+        if ($model->load(Yii::$app->request->post())) {
+            return $this->redirect(['flufind', 'streetId' => $model->streetId, 'yearVal' => $model->yearVal]);
+        } else {
+            return $this->render('flu', [
+                'model' => $model,
+            ]);
+        }
     }
     /**
-     * Lists all Peoples models.
+     * Экшн поиска людей по улице и сроку флюры.
      * @return mixed
-     */
-    public function actionFluFind()
-    {
-        
-        return $this->render('fluFind', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
-    }
-    /*
-     public function actionFluFind($streetId,$yearVal)
+     */    
+     public function actionFlufind($streetId,$yearVal)
     {
         $model = new Peoples;
         $peoplesArr = Peoples::find()->where(['peopleStreet' => $streetId])->andWhere('peopleFluTerm>'.$yearVal)->all();
         
-        return $this->render('fluFind', [
+        return $this->render('flufind', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'model' => $model,
             'dt' => $peoplesArr,
         ]);
     }
-     */
 }

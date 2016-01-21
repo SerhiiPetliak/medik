@@ -41,8 +41,8 @@ class Peoples extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['peopleFIO', 'peopleBirthday', 'peopleWorking', 'peopleFluNumber', 'peopleFluDate', 'peopleFluResult', 'peopleFluTerm', 'peopleStreet'], 'required'],
-            [['peopleBirthday', 'peopleFluDate','streetId','yearVal'], 'safe'],
+            [['peopleFIO', 'peopleBirthday', 'peopleWorking', 'peopleFluNumber', 'peopleFluDate', 'peopleFluResult', 'peopleStreet'], 'required'],
+            [['peopleBirthday', 'peopleFluDate','streetId','yearVal', 'peopleFluTerm'], 'safe'],
             [['peopleWorking', 'peopleFluResult', 'peopleFluTerm', 'peopleStreet'], 'integer'],
             [['peopleFIO', 'peopleFluNumber'], 'string', 'max' => 255]
         ];
