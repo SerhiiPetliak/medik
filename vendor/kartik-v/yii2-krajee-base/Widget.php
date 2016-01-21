@@ -3,8 +3,8 @@
 /**
  * @package   yii2-krajee-base
  * @author    Kartik Visweswaran <kartikv2@gmail.com>
- * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2015
- * @version   1.8.1
+ * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2015
+ * @version   1.7.4
  */
 
 namespace kartik\base;
@@ -33,7 +33,9 @@ class Widget extends \yii\base\Widget
     public $pluginOptions = [];
 
     /**
-     * @var array widget JQuery events. You must define events in event-name => event-function format for example:
+     * @var array widget JQuery events. You must define events in
+     * event-name => event-function format
+     * for example:
      * ~~~
      * pluginEvents = [
      *     "change" => "function() { log("change"); }",
@@ -42,12 +44,6 @@ class Widget extends \yii\base\Widget
      * ~~~
      */
     public $pluginEvents = [];
-
-    /**
-     * @var string a pjax container identifier if applicable inside which the widget will be rendered. If this is set,
-     *     the widget will automatically reinitialize on pjax completion.
-     */
-    public $pjaxContainerId;
 
     /**
      * @var array the the internalization configuration for this widget

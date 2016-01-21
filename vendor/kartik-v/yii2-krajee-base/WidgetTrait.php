@@ -3,8 +3,8 @@
 /**
  * @package   yii2-krajee-base
  * @author    Kartik Visweswaran <kartikv2@gmail.com>
- * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2015
- * @version   1.8.1
+ * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2015
+ * @version   1.7.4
  */
 
 namespace kartik\base;
@@ -15,14 +15,6 @@ use yii\web\View;
 
 /**
  * Trait used for Krajee widgets.
- *
- * @property array  $options
- * @property array  $pluginOptions
- * @property array  $_encOptions
- * @property string $_hashVar
- * @property string $_dataVar
- *
- * @method View getView()
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.6.0
@@ -38,7 +30,6 @@ trait WidgetTrait
      */
     protected function setDataVar($name)
     {
-        /** @noinspection PhpUndefinedFieldInspection */
         $this->_dataVar = "data-krajee-{$name}";
     }
 
@@ -77,7 +68,7 @@ trait WidgetTrait
      */
     protected function hashPluginOptions($name)
     {
-        $this->_encOptions = empty($this->pluginOptions) ? '' : Json::htmlEncode($this->pluginOptions);
+        $this->_encOptions = empty($this->pluginOptions) ? '' : Json::encode($this->pluginOptions);
         $this->_hashVar = $name . '_' . hash('crc32', $this->_encOptions);
         $this->options['data-krajee-' . $name] = $this->_hashVar;
     }
@@ -85,15 +76,14 @@ trait WidgetTrait
     /**
      * Registers plugin options by storing it in a hashed javascript variable
      *
-     * @param string $name the plugin name
-     *
      * @return void
      */
     protected function registerPluginOptions($name)
     {
+        $view = $this->getView();
         $this->hashPluginOptions($name);
         $encOptions = empty($this->_encOptions) ? '{}' : $this->_encOptions;
-        $this->registerWidgetJs("var {$this->_hashVar} = {$encOptions};\n", View::POS_HEAD);
+        $view->registerJs("var {$this->_hashVar} = {$encOptions};\n", View::POS_HEAD);
     }
 
     /**
@@ -104,7 +94,7 @@ trait WidgetTrait
      * @param string $callback the javascript callback function to be called after plugin loads
      * @param string $callbackCon the javascript callback function to be passed to the plugin constructor
      *
-     * @return string the generated plugin script
+     * @return the generated plugin script
      */
     protected function getPluginScript($name, $element = null, $callback = null, $callbackCon = null)
     {
@@ -141,35 +131,9 @@ trait WidgetTrait
     protected function registerPlugin($name, $element = null, $callback = null, $callbackCon = null)
     {
         $script = $this->getPluginScript($name, $element, $callback, $callbackCon);
-        $this->registerWidgetJs($script);
-    }
-
-    /**
-     * Registers a JS code block for the widget.
-     *
-     * @param string  $js the JS code block to be registered
-     * @param integer $position the position at which the JS script tag should be inserted in a page. The possible
-     *     values are:
-     *      - [[POS_HEAD]]: in the head section
-     *      - [[POS_BEGIN]]: at the beginning of the body section
-     *      - [[POS_END]]: at the end of the body section
-     *      - [[POS_LOAD]]: enclosed within jQuery(window).load(). Note that by using this position, the method will
-     *     automatically register the jQuery js file.
-     *      - [[POS_READY]]: enclosed within jQuery(document).ready(). This is the default value. Note that by using
-     *     this position, the method will automatically register the jQuery js file.
-     * @param string  $key the key that identifies the JS code block. If null, it will use $js as the key. If two JS
-     *     code blocks are registered with the same key, the latter will overwrite the former.
-     */
-    public function registerWidgetJs($js, $position = View::POS_READY, $key = null)
-    {
-        if (empty($js)) {
-            return;
-        }
-        $view = $this->getView();
-        $view->registerJs($js, $position, $key);
-        if (!empty($this->pjaxContainerId) && ($position === View::POS_LOAD || $position === View::POS_READY)) {
-            $pjax = 'jQuery("#' . $this->pjaxContainerId . '")';
-            $view->registerJs("{$pjax}.on('pjax:complete',function(){ {$js} });");
+        if (!empty($script)) {
+            $view = $this->getView();
+            $view->registerJs($script);
         }
     }
 }

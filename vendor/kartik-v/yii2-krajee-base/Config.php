@@ -3,8 +3,8 @@
 /**
  * @package   yii2-krajee-base
  * @author    Kartik Visweswaran <kartikv2@gmail.com>
- * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2015
- * @version   1.8.1
+ * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2015
+ * @version   1.7.4
  */
 
 namespace kartik\base;
@@ -43,9 +43,7 @@ class Config
         'listBox',
         'dropDownList',
         'checkboxList',
-        'radioList',
-        'checkboxButtonGroup',
-        'radioButtonGroup'
+        'radioList'
     ];
 
     protected static $_validInputWidgets = [
@@ -189,9 +187,6 @@ class Config
     /**
      * Check if a namespaced widget is valid or installed.
      *
-     * @param string $type the widget type
-     * @param string $reason the message to be displayed for dependency failure
-     *
      * @throws InvalidConfigException
      */
     public static function validateInputWidget($type, $reason = self::DEFAULT_REASON)
@@ -202,7 +197,8 @@ class Config
     }
 
     /**
-     * Convert a language string in yii\i18n format to a ISO-639 format (2 or 3 letter code).
+     * Convert a language string in yii\i18n format to
+     * a ISO-639 format (2 or 3 letter code).
      *
      * @param string $language the input language string
      *
@@ -252,9 +248,8 @@ class Config
      */
     public static function getModule($m)
     {
-        $app = Yii::$app;
-        $mod = isset($app->controller) && $app->controller->module ? $app->controller->module : null;
-        return $mod && $mod->getModule($m) ? $mod->getModule($m) : $app->getModule($m);
+        $mod = Yii::$app->controller->module;
+        return $mod && $mod->getModule($m) ? $mod->getModule($m) : Yii::$app->getModule($m);
     }
 
     /**
@@ -268,7 +263,6 @@ class Config
      */
     public static function initModule($class)
     {
-        /** @noinspection PhpUndefinedFieldInspection */
         $m = $class::MODULE;
         $module = $m ? static::getModule($m) : null;
         if ($module === null || !$module instanceof $class) {

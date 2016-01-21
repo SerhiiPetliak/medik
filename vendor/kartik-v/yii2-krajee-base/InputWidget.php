@@ -3,14 +3,13 @@
 /**
  * @package   yii2-krajee-base
  * @author    Kartik Visweswaran <kartikv2@gmail.com>
- * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2015
- * @version   1.8.1
+ * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2015
+ * @version   1.7.2
  */
 
 namespace kartik\base;
 
 use Yii;
-use yii\base\InvalidConfigException;
 use yii\helpers\FormatConverter;
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
@@ -78,12 +77,6 @@ class InputWidget extends \yii\widgets\InputWidget
      * ~~~
      */
     public $pluginEvents = [];
-    
-    /**
-     * @var string a pjax container identifier if applicable inside which the widget will be rendered.
-     * If this is set, the widget will automatically reinitialize on pjax completion.
-     */
-    public $pjaxContainerId;
 
     /**
      * @var boolean whether the widget should automatically format the date from
@@ -139,15 +132,6 @@ class InputWidget extends \yii\widgets\InputWidget
     public function init()
     {
         parent::init();
-        $this->initInputWidget();
-    }
-
-    /**
-     * Initializes the input widget
-     */
-    protected function initInputWidget()
-    {
-        $this->initI18N(__DIR__, 'kvbase');
         if (!isset($this->language)) {
             $this->language = Yii::$app->language;
         }
@@ -198,7 +182,6 @@ class InputWidget extends \yii\widgets\InputWidget
     /**
      * Sets the language JS file if it exists
      *
-     * @param string $prefix the language filename prefix
      * @param string $assetPath the path to the assets
      * @param string $filePath the path to the JS file with the file name prefix
      * @param string $suffix the file name suffix - defaults to '.js'
@@ -237,11 +220,6 @@ class InputWidget extends \yii\widgets\InputWidget
 
     /**
      * Generates an input
-     *
-     * @param string $type the input type
-     * @param bool   $list whether the input is of dropdown list type
-     *
-     * @return mixed
      */
     protected function getInput($type, $list = false)
     {
@@ -335,18 +313,20 @@ class InputWidget extends \yii\widgets\InputWidget
         }
         if (isset($this->pluginOptions['format'])) {
             $format = $this->pluginOptions['format'];
-            $format = strncmp($format, 'php:', 4) === 0 ? substr($format, 4) :
-                FormatConverter::convertDateIcuToPhp($format, $type);
+            $format = strncmp($format, 'php:', 4) === 0 ? substr($format,
+                4) : FormatConverter::convertDateIcuToPhp($format, $type);
             $this->pluginOptions['format'] = static::convertDateFormat($format);
             return;
         }
         $attrib = $type . 'Format';
         $format = isset(Yii::$app->formatter->$attrib) ? Yii::$app->formatter->$attrib : '';
-        if (empty($format)) {
-            throw new InvalidConfigException("Error parsing '{$type}' format.");
+        if (isset($this->dateFormat) && strncmp($this->dateFormat, 'php:', 4) === 0) {
+            $this->pluginOptions['format'] = static::convertDateFormat(substr($format, 4));
+        } elseif ($format != '') {
+            $format = FormatConverter::convertDateIcuToPhp($format, $type);
+            $this->pluginOptions['format'] = static::convertDateFormat($format);
+        } else {
+            throw InvalidConfigException("Error parsing '{$type}' format.");
         }
-        $format = strncmp($format, 'php:', 4) === 0 ? substr($format, 4) :
-            FormatConverter::convertDateIcuToPhp($format, $type);
-        $this->pluginOptions['format'] = static::convertDateFormat($format);
     }
 }
