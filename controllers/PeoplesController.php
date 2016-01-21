@@ -8,6 +8,8 @@ use app\models\PeoplesSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\models\graftsPeoples;
+use app\models\grafts;
 
 /**
  * PeoplesController implements the CRUD actions for Peoples model.
@@ -34,10 +36,30 @@ class PeoplesController extends Controller
     {
         $searchModel = new PeoplesSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        
+        /* */
+        $peoplesArr = Peoples::find()->all();
+        
+        foreach($peoplesArr as $p){
+            $findRes = graftsPeoples::find()->where(['peopleId' => $p['peopleId']])->all(); 
+            if(empty($findRes)){
+                continue;
+            }else{
+                
+                foreach($findRes as $f){
+                    $graftName = Grafts::find()->where(['graftId' => $f['graftId']])->all();
+                    $arr[$p['peopleId']][] = $graftName[0]['graftName'];
+                }                
+                
+            }
+        } 
+        /* */
+        
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'peoplesGraft' => $arr,
         ]);
     }
 
@@ -151,11 +173,26 @@ class PeoplesController extends Controller
         $model = new Peoples;
         $peoplesArr = Peoples::find()->where(['peopleStreet' => $streetId])->andWhere('peopleFluTerm>'.$yearVal)->all();
         
+        foreach($peoplesArr as $p){
+            $findRes = graftsPeoples::find()->where(['peopleId' => $p['peopleId']])->all(); 
+            if(empty($findRes)){
+                continue;
+            }else{
+                
+                foreach($findRes as $f){
+                    $graftName = Grafts::find()->where(['graftId' => $f['graftId']])->all();
+                    $arr[$p['peopleId']][] = $graftName[0]['graftName'];
+                }                
+                
+            }
+        }        
+        
         return $this->render('flufind', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'model' => $model,
             'dt' => $peoplesArr,
+            'gr' => $arr,
         ]);
-    }
+    }    
 }
