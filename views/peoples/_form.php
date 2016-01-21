@@ -32,6 +32,8 @@ use app\models\chronicDiseases;
 
     <?= $form->field($model, 'peopleStreet')->textInput() ?>
     
+    <?= $form->field($model, 'peopleAdress')->textInput() ?>
+    
     <?php
         echo Html::label("Прививки");
         echo Select2::widget([

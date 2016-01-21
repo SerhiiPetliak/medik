@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <table class="table table-striped table-bordered">
         <tr>
             <td>ФИО</td>
-            <td>Улица</td>
+            <td>Улица, дом</td>
             <td>Дата флюры</td>
         </tr>
     <?php    
@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
             echo "
                 <tr>
                     <td>".$d['peopleFIO']."</td>
-                    <td>".$d['peopleStreet']."</td>
+                    <td>".$d['peopleStreet']." ".$d['peopleAdress']."</td>
                     <td>".date('d-m-Y', strtotime($d['peopleFluDate']))."</td>
                 </tr>
             ";

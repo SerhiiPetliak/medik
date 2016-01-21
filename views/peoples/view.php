@@ -37,6 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'peopleFluResult',
             'peopleFluTerm',
             'peopleStreet',
+            'peopleAdress',
             [
                 'label' => 'Прививки',
                 'format' => 'raw',
