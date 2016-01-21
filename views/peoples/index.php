@@ -7,6 +7,8 @@ use kartik\select2\Select2;
 use app\models\Streets;
 use app\models\graftsPeoples;
 use app\models\grafts;
+use app\models\chronicDiseasesPeoples;
+use app\models\chronicDiseases;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\PeoplesSearch */
@@ -49,6 +51,22 @@ $this->params['breadcrumbs'][] = $this->title;
                     foreach($findRes as $f){
                         $graftName = Grafts::find()->where(['graftId' => $f['graftId']])->all();
                         $r .= '<span class="label label-primary">'.$graftName[0]['graftName'].'</span>&nbsp;';
+                    }
+                    
+                    return $r;
+                }
+            ],
+            [
+                'attribute' => 'chronic',
+                'format' => 'raw',
+                'value' => function($data){  
+                    $r = "";
+        
+                   $findRes = chronicDiseasesPeoples::find()->where(['peopleId' => $data->peopleId])->all(); 
+                   
+                    foreach($findRes as $f){
+                        $chronicDiseasesName = chronicDiseases::find()->where(['chronicDiseasesId' => $f['chronicDiseasesId']])->all();
+                        $r .= '<span class="label label-primary">'.$chronicDiseasesName[0]['chronicDiseasesName'].'</span>&nbsp;';
                     }
                     
                     return $r;

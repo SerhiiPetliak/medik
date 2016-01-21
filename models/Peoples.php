@@ -27,6 +27,7 @@ class Peoples extends \yii\db\ActiveRecord
     public $streetId;
     public $yearVal;
     public $graft;
+    public $chronic;
     
     /**
      * @inheritdoc
@@ -43,8 +44,8 @@ class Peoples extends \yii\db\ActiveRecord
     {
         return [
             [['peopleFIO', 'peopleBirthday', 'peopleWorking', 'peopleFluNumber', 'peopleFluDate', 'peopleFluResult', 'peopleStreet'], 'required'],
-            [['peopleBirthday', 'peopleFluDate','streetId','yearVal', 'peopleFluTerm', 'graft'], 'safe'],
-            [['peopleWorking', 'peopleFluResult', 'peopleFluTerm', 'peopleStreet', 'graft'], 'integer'],
+            [['peopleBirthday', 'peopleFluDate','streetId','yearVal', 'peopleFluTerm', 'graft', 'chronic'], 'safe'],
+            [['peopleWorking', 'peopleFluResult', 'peopleFluTerm', 'peopleStreet', 'graft', 'chronic'], 'integer'],
             [['peopleFIO', 'peopleFluNumber'], 'string', 'max' => 255]
         ];
     }
@@ -64,6 +65,8 @@ class Peoples extends \yii\db\ActiveRecord
             'peopleFluResult' => 'People Flu Result',
             'peopleFluTerm' => 'People Flu Term',
             'peopleStreet' => 'People Street',
+            'graft' => 'Прививки',
+            'chronic' => 'Заболевания',
         ];
     }
 
