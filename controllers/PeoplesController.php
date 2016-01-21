@@ -9,7 +9,9 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use app\models\graftsPeoples;
+use app\models\chronicDiseasesPeoples;
 use app\models\grafts;
+use app\models\chronicDiseases;
 
 /**
  * PeoplesController implements the CRUD actions for Peoples model.
@@ -37,25 +39,6 @@ class PeoplesController extends Controller
         $searchModel = new PeoplesSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         
-        /* */
-        $peoplesArr = Peoples::find()->all();
-        
-        foreach($peoplesArr as $p){
-            $findRes = graftsPeoples::find()->where(['peopleId' => $p['peopleId']])->all(); 
-            if(empty($findRes)){
-                continue;
-            }else{
-                
-                foreach($findRes as $f){
-                    $graftName = Grafts::find()->where(['graftId' => $f['graftId']])->all();
-                    $arr[$p['peopleId']][] = $graftName[0]['graftName'];
-                }                
-                
-            }
-        } 
-        /* */
-        
-
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -70,8 +53,29 @@ class PeoplesController extends Controller
      */
     public function actionView($id)
     {
+        
+        $r = "";
+        
+        $findRes = graftsPeoples::find()->where(['peopleId' => $id])->all(); 
+                   
+        foreach($findRes as $f){
+            $graftName = Grafts::find()->where(['graftId' => $f['graftId']])->all();
+            $r .= '<span class="label label-primary">'.$graftName[0]['graftName'].'</span>&nbsp;';
+        }
+        
+        $r2 = "";
+        
+        $findRes = chronicDiseasesPeoples::find()->where(['peopleId' => $id])->all(); 
+                   
+        foreach($findRes as $f){
+            $chronicDiseasesName = chronicDiseases::find()->where(['chronicDiseasesId' => $f['chronicDiseasesId']])->all();
+            $r2 .= '<span class="label label-primary">'.$chronicDiseasesName[0]['chronicDiseasesName'].'</span>&nbsp;';
+        }
+        
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'graft' => $r,
+            'chronic' => $r2,
         ]);
     }
 
@@ -85,9 +89,23 @@ class PeoplesController extends Controller
         $model = new Peoples();
 
         if ($model->load(Yii::$app->request->post())) {
+            
             $currentYear = date('Y');
             $model->peopleFluTerm = $currentYear - date('Y', strtotime($model->peopleFluDate)); //Вычисляю разницу текущего года и даты флюры
             $model->save();
+            
+            foreach($model->graft as $m){
+                $gm = new graftsPeoples;
+                    $gm->peopleId = $model->peopleId;
+                    $gm->graftId = $m;
+                $gm->insert();
+            }
+            foreach($model->chronic as $c){
+                $cr = new chronicDiseasesPeoples;
+                    $cr->peopleId = $model->peopleId;
+                    $cr->chronicDiseasesId = $c;
+                $cr->insert();
+            }
             return $this->redirect(['view', 'id' => $model->peopleId]);
         } else {
             return $this->render('create', [
@@ -112,10 +130,40 @@ class PeoplesController extends Controller
             $model->peopleFluTerm = $currentYear - date('Y', strtotime($model->peopleFluDate)); //Вычисляю разницу текущего года и даты флюры
             $model->save();
             
+            graftsPeoples::deleteAll('peopleId = '.$id);
+            chronicDiseasesPeoples::deleteAll('peopleId = '.$id);
+            
+            foreach($model->graft as $m){
+                $gm = new graftsPeoples;
+                    $gm->peopleId = $model->peopleId;
+                    $gm->graftId = $m;
+                $gm->insert();
+            }
+            foreach($model->chronic as $c){
+                $cr = new chronicDiseasesPeoples;
+                    $cr->peopleId = $model->peopleId;
+                    $cr->chronicDiseasesId = $c;
+                $cr->insert();
+            }
+            
             return $this->redirect(['view', 'id' => $model->peopleId]);
         } else {
+            $opt = graftsPeoples::find()->where(['peopleId' => $_GET['id']])->all();
+            $optArr = array();
+            foreach($opt as $o){
+                $optArr[] = $o['graftId']; 
+            }
+            $opt2 = chronicDiseasesPeoples::find()->where(['peopleId' => $_GET['id']])->all();
+            $optArr2 = array();
+            foreach($opt2 as $op){
+                $optArr2[] = $op['chronicDiseasesId']; 
+            }
+            $model->graft = $optArr;
+            $model->chronic= $optArr2;
+            
             return $this->render('update', [
                 'model' => $model,
+                //'optArr' => $optArr,
             ]);
         }
     }
@@ -128,8 +176,10 @@ class PeoplesController extends Controller
      */
     public function actionDelete($id)
     {
+        graftsPeoples::deleteAll('peopleId = '.$id);
+            chronicDiseasesPeoples::deleteAll('peopleId = '.$id);
         $this->findModel($id)->delete();
-
+        
         return $this->redirect(['index']);
     }
 

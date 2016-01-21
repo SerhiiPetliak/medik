@@ -33,7 +33,6 @@ $this->params['breadcrumbs'][] = $this->title;
         }
     ?>
     </table>
-    <?php var_dump($gr); ?>
     <button class="button button-success peoples-print-button" onclick="window.print();">Print</button>
     
 

@@ -45,7 +45,7 @@ class Peoples extends \yii\db\ActiveRecord
         return [
             [['peopleFIO', 'peopleBirthday', 'peopleWorking', 'peopleFluNumber', 'peopleFluDate', 'peopleFluResult', 'peopleStreet'], 'required'],
             [['peopleBirthday', 'peopleFluDate','streetId','yearVal', 'peopleFluTerm', 'graft', 'chronic'], 'safe'],
-            [['peopleWorking', 'peopleFluResult', 'peopleFluTerm', 'peopleStreet', 'graft', 'chronic'], 'integer'],
+            [['peopleWorking', 'peopleFluResult', 'peopleFluTerm', 'peopleStreet'], 'integer'],
             [['peopleFIO', 'peopleFluNumber'], 'string', 'max' => 255]
         ];
     }
