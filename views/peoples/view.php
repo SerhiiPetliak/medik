@@ -30,10 +30,18 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'peopleId',
             'peopleFIO',
-            'peopleBirthday',
+            [
+                'label' => 'Дата рождения',
+                'format' => 'raw',
+                'value' => $birth,
+            ],
             'peopleWorking0.workingName',
             'peopleFluNumber',
-            'peopleFluDate',
+            [
+                'label' => 'Дата флюорографии',
+                'format' => 'raw',
+                'value' => $flu, 
+            ],
             'peopleFluResult',
             //'peopleFluTerm',
             'peopleStreet0.streetName',

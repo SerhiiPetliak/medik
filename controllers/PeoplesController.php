@@ -53,6 +53,7 @@ class PeoplesController extends Controller
      */
     public function actionView($id)
     {
+        $model = $this->findModel($id);
         
         $r = "";
         
@@ -66,6 +67,9 @@ class PeoplesController extends Controller
         $r2 = "";
         
         $findRes = chronicDiseasesPeoples::find()->where(['peopleId' => $id])->all(); 
+        
+        $birth = date('d.m.Y', strtotime($model->peopleBirthday));
+        $flu = date('d.m.Y', strtotime($model->peopleFluDate));
                    
         foreach($findRes as $f){
             $chronicDiseasesName = chronicDiseases::find()->where(['chronicDiseasesId' => $f['chronicDiseasesId']])->all();
@@ -76,6 +80,8 @@ class PeoplesController extends Controller
             'model' => $this->findModel($id),
             'graft' => $r,
             'chronic' => $r2,
+            'birth' => $birth,
+            'flu' => $flu,
         ]);
     }
 
@@ -89,6 +95,13 @@ class PeoplesController extends Controller
         $model = new Peoples();
 
         if ($model->load(Yii::$app->request->post())) {
+            
+            $birth = date('Y-m-d', strtotime($model->peopleBirthday));
+            $fluDate = date('Y-m-d', strtotime($model->peopleFluDate));
+            
+            $model->peopleBirthday = $birth;
+            $model->peopleFluDate = $fluDate;         
+                    
             
             $currentYear = date('Y');
             $model->peopleFluTerm = $currentYear - date('Y', strtotime($model->peopleFluDate)); //Вычисляю разницу текущего года и даты флюры
@@ -125,6 +138,12 @@ class PeoplesController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post())) {
+            
+            $birth = date('Y-m-d', strtotime($model->peopleBirthday));
+            $fluDate = date('Y-m-d', strtotime($model->peopleFluDate));
+            
+            $model->peopleBirthday = $birth;
+            $model->peopleFluDate = $fluDate; 
             
             $currentYear = date('Y');
             $model->peopleFluTerm = $currentYear - date('Y', strtotime($model->peopleFluDate)); //Вычисляю разницу текущего года и даты флюры

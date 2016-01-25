@@ -4,12 +4,17 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use kartik\select2\Select2;
+use dosamigos\datepicker\DatePicker;
 use app\models\grafts;
 use app\models\chronicDiseases;
+
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Peoples */
 /* @var $form yii\widgets\ActiveForm */
+
+
+
 ?>
 
 <div class="peoples-form">
@@ -18,13 +23,36 @@ use app\models\chronicDiseases;
 
     <?= $form->field($model, 'peopleFIO')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'peopleBirthday')->textInput() ?>
+    
+    <?= $form->field($model, 'peopleBirthday')->widget(
+    DatePicker::className(), [
+        // inline too, not bad
+        'inline' => false, 
+        'language' => 'ua',
+         // modify template for custom rendering
+        //'template' => '<div class="well well-sm" style="background-color: #fff; width:250px">{input}</div>',
+        'clientOptions' => [
+            'autoclose' => true,
+            'format' => 'dd-mm-yyyy'
+        ]
+]);?>
 
     <?= $form->field($model, 'peopleWorking')->textInput() ?>
 
     <?= $form->field($model, 'peopleFluNumber')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'peopleFluDate')->textInput() ?>
+    <?= $form->field($model, 'peopleFluDate')->widget(
+    DatePicker::className(), [
+        // inline too, not bad
+        'inline' => false, 
+        'language' => 'ua',
+         // modify template for custom rendering
+        //'template' => '<div class="well well-sm" style="background-color: #fff; width:250px">{input}</div>',
+        'clientOptions' => [
+            'autoclose' => true,
+            'format' => 'dd-mm-yyyy'
+        ]
+]);?>
 
     <?= $form->field($model, 'peopleFluResult')->textInput() ?>
 

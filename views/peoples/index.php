@@ -34,7 +34,14 @@ $this->params['breadcrumbs'][] = $this->title;
 
             //'peopleId',
             'peopleFIO',
-            'peopleBirthday',
+            
+            [
+                'attribute' => 'peopleBirthday',
+                'format' => 'raw',
+                'value' => function($data){
+                    return date('d.m.Y', strtotime($data->peopleBirthday));
+                }
+            ],
             'peopleWorking0.workingName',
             'peopleFluNumber',
             // 'peopleFluDate',
