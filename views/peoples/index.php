@@ -14,17 +14,10 @@ use app\models\chronicDiseases;
 /* @var $searchModel app\models\PeoplesSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Peoples';
+$this->title = 'Люди';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="peoples-index">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <p>
-        <?= Html::a('Create Peoples', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
         
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -42,10 +35,26 @@ $this->params['breadcrumbs'][] = $this->title;
                     return date('d.m.Y', strtotime($data->peopleBirthday));
                 }
             ],
-            'peopleWorking0.workingName',
+            [
+                'attribute' => 'peopleWorking',
+                'value' => 'peopleWorking0.workingName',
+            ],
             'peopleFluNumber',
-            // 'peopleFluDate',
-            // 'peopleFluResult',
+            'peopleFluDate',
+            [
+                'attribute' => 'peopleFluResult',
+                'format' => 'raw',
+                'value' => function($data){ 
+                    $res = "";
+                    if($data->peopleFluResult == 0){
+                        $res = '<span class="label label-danger">Патология</span>';
+                    }else{
+                        $res = '<span class="label label-success">Норма</span>';
+                    }
+                    
+                    return $res; 
+                }
+            ],
             // 'peopleFluTerm',
             [
                 'attribute' => 'graft',

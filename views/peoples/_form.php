@@ -7,6 +7,8 @@ use kartik\select2\Select2;
 use dosamigos\datepicker\DatePicker;
 use app\models\grafts;
 use app\models\chronicDiseases;
+use app\models\working;
+use app\models\streets;
 
 
 /* @var $this yii\web\View */
@@ -37,7 +39,15 @@ use app\models\chronicDiseases;
         ]
 ]);?>
 
-    <?= $form->field($model, 'peopleWorking')->textInput() ?>
+    <?php
+        echo Html::label("Место работы/учебы");
+        echo Select2::widget([
+            'model' => $model,
+            'attribute' => 'peopleWorking',
+            'language' => 'ru',
+            'data' => ArrayHelper::map(Working::find()->all(),'workingId','workingName')
+        ]);        
+    ?>
 
     <?= $form->field($model, 'peopleFluNumber')->textInput(['maxlength' => true]) ?>
 
@@ -54,11 +64,27 @@ use app\models\chronicDiseases;
         ]
 ]);?>
 
-    <?= $form->field($model, 'peopleFluResult')->textInput() ?>
+    <?php
+        echo Html::label("Результат флюорографии");
+        echo Select2::widget([
+            'model' => $model,
+            'attribute' => 'peopleFluResult',
+            'language' => 'ru',
+            'data' => [0 => "Патология", 1 => "Норма"]
+        ]);        
+    ?>
 
     <?= $form->field($model, 'peopleFluTerm')->hiddenInput()->label(false) ?>
-
-    <?= $form->field($model, 'peopleStreet')->textInput() ?>
+    
+        <?php
+        echo Html::label("Улица");
+        echo Select2::widget([
+            'model' => $model,
+            'attribute' => 'peopleStreet',
+            'language' => 'ru',
+            'data' => ArrayHelper::map(Streets::find()->all(),'streetId','streetName')
+        ]);        
+    ?>
     
     <?= $form->field($model, 'peopleAdress')->textInput() ?>
     

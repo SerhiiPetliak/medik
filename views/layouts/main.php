@@ -36,16 +36,18 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/streets']],
+            ['label' => 'Люди', 'url' => ['/peoples'],
+                'items' =>[
+                    ['label' => 'Просмотр', 'url' => ['/peoples']],
+                    ['label' => 'Добавление', 'url' => ['/peoples/create']]                
+                ]                
+            ],
+            ['label' => 'Улицы', 'url' => ['/streets']],
+            ['label' => 'Места работы', 'url' => ['/working']],
+            ['label' => 'Прививки', 'url' => ['/grafts']],
+            ['label' => 'Болезни', 'url' => ['/chronic_diseases']],
             ['label' => 'Поиск по дате', 'url' => ['/peoples/flu']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
-            Yii::$app->user->isGuest ?
-                ['label' => 'Login', 'url' => ['/site/login']] :
-                [
-                    'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
-                    'url' => ['/site/logout'],
-                    'linkOptions' => ['data-method' => 'post']
-                ],
+            
         ],
     ]);
     NavBar::end();
