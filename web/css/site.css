@@ -121,6 +121,7 @@ a.desc:after {
     width: 126px;
     height: 126px;
     margin-top: -36px;
+    margin-left: -3px;
     text-align: center;
     border-radius: 3px;
     padding-top: 30px;
@@ -140,4 +141,15 @@ a.desc:after {
 }
 .people_view_list .glyphicon{
     color: #366FA5;
+}
+.nb{
+    border: 0px;
+}
+.ills h4,
+.grafts h4{
+    margin: 5px;
+}
+.ills li,
+.grafts li{
+    margin: 3px 0px 0px 6px;
 }
