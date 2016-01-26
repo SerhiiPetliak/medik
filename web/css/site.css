@@ -113,3 +113,31 @@ a.desc:after {
 .navbar-inverse .navbar-brand {
     color: #fff;
 }
+.people_view_list{
+    list-style-type: none;
+    margin-left: -40px;
+}
+.flu_res_div{
+    width: 126px;
+    height: 126px;
+    margin-top: -36px;
+    text-align: center;
+    border-radius: 3px;
+    padding-top: 30px;
+}
+.flu_norm{
+    background-color: #5CB85C;
+}
+.flu_patology{
+    background-color: #D9534F;
+}
+.fluTitle{
+    margin: 5px;
+}
+.flu_res_div .glyphicon{
+    font-size: 50px;
+    color: #fff;
+}
+.people_view_list .glyphicon{
+    color: #366FA5;
+}

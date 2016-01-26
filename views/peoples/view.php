@@ -20,10 +20,10 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="row">
         <div class="col-md-3">
             <div class="thumbnail">
-                <img src="..." alt="...">
+                <img src="http://medik/web/img/user.png" alt="...">
                 <div class="caption">
                   <h3><?php echo $model->peopleFIO; ?></h3>
-            <ul>  
+            <ul class="people_view_list">  
                 <li>
                     <?php 
                         $workingName = $model->getPeopleWorking0()->all();
@@ -44,8 +44,8 @@ $this->params['breadcrumbs'][] = $this->title;
             </ul>
                   
                   <p>
-        <?= Html::a('Update', ['update', 'id' => $model->peopleId], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->peopleId], [
+        <?= Html::a('Редактировать', ['update', 'id' => $model->peopleId], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Удалить', ['delete', 'id' => $model->peopleId], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
@@ -57,59 +57,99 @@ $this->params['breadcrumbs'][] = $this->title;
               </div>
 
         </div>
-        <div class="col-md-3">
-            Флюорография
-            <ul>
-                <li>
+        <div class="col-md-9">
+            
+            <div class="row thumbnail">
+                <h3 class="fluTitle">Флюорография</h3>
+                <div class="col-md-8">
                     
-                    <?php echo $model->peopleFluNumber; ?>
-                </li>
-                <li>
-                    <?php echo $model->peopleFluDate; ?>
-                </li>
-                <li>
+                    <ul class="people_view_list">
+                        <li title='Номер'>  
+                            <h4>
+                                <?php echo "<span class='glyphicon glyphicon-tag' title='Номер'></span>&nbsp;".$model->peopleFluNumber; ?>
+                            </h4>
+                        </li>
+                        <li title='Дата проведения'>
+                            <h4>
+                                <?php echo "<span class='glyphicon glyphicon-calendar'></span>&nbsp;".date('d.m.Y', strtotime($model->peopleBirthday)); ?>
+                            </h4>
+                        </li>                        
+                    </ul>
+                </div>
+                <div class="col-md-2">
                     <?php
                         if($model->peopleFluResult == 0){
-                            echo '<span class="label label-danger">Патология</span>';
+                            $fluClass = "flu_patology";
                         }else{
-                            echo '<span class="label label-success">Норма</span>';
+                            $fluClass = "flu_norm";
                         }
                     ?>
-                </li>
-            </ul>
-        </div>
-        <div class="col-md-3">
-            Прививки
-            <ul>
-            <?php
-            
-            $findRes = graftsPeoples::find()->where(['peopleId' => $model->peopleId])->all(); 
-                   
-                    foreach($findRes as $f){
-                        $graftName = Grafts::find()->where(['graftId' => $f['graftId']])->all();
-                        echo '<li>'.$graftName[0]['graftName'].'</li>';
-                    }           
-            ?>
-            </ul>
-        </div>
-        <div class="col-md-3">
-            Болезни
-            <ul>
-            <?php
-            
-            $findRes = chronicDiseasesPeoples::find()->where(['peopleId' => $model->peopleId])->all(); 
-                   
-                    foreach($findRes as $f){
-                        $chronicDiseasesName = chronicDiseases::find()->where(['chronicDiseasesId' => $f['chronicDiseasesId']])->all();
-                        echo '<li>'.$chronicDiseasesName[0]['chronicDiseasesName'].'</li>';
-                    }          
-            ?>
-            </ul>
-        </div>
-    </div>
-    <div class="row">
-    
-    </div>
+                    <div class="flu_res_div <?php echo ($fluClass == "flu_norm" ?  "flu_norm" : "flu_patology");?>">
+                    <?php
+                        if($model->peopleFluResult == 0){
+                            echo '<span class="glyphicon glyphicon-exclamation-sign"></span><br/><span class="label label-danger">Патология</span>';
+                        }else{
+                            echo '<span class="glyphicon glyphicon-ok-sign"></span><br/><span class="label label-success">Норма</span>';
+                        }
+                    ?>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <?php
+                        if($model->peopleFluTerm > 1 ){
+                            $termClass = "flu_patology";
+                        }else{
+                            $termClass = "flu_norm";
+                        }
+                    ?>
+                    <div class="flu_res_div <?php echo ($termClass == "flu_norm" ?  "flu_norm" : "flu_patology");?>">
+                    <?php
+                        if($model->peopleFluTerm > 1){
+                            echo '<span class="glyphicon glyphicon-exclamation-sign"></span><br/><span class="label label-danger">'.$model->peopleFluTerm.' года</span>';
+                        }else{
+                            echo '<span class="glyphicon glyphicon-ok-sign"></span><br/><span class="label label-success">'.$model->peopleFluTerm.' год</span>';
+                        }
+                    ?>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 thumbnail">
+            <div class="col-md-6 thumbnail">
+                <div class="">
+                Прививки
+                <ul class="people_view_list">
+                <?php
+
+                $findRes = graftsPeoples::find()->where(['peopleId' => $model->peopleId])->all(); 
+
+                        foreach($findRes as $f){
+                            $graftName = Grafts::find()->where(['graftId' => $f['graftId']])->all();
+                            echo '<li>'.$graftName[0]['graftName'].'</li>';
+                        }           
+                ?>
+                </ul>    
+            </div>
+            </div>
+            <div class="col-md-6 thumbnail">
+                <div class="">
+                        Болезни
+                    <ul class="people_view_list">
+                    <?php
+
+                    $findRes = chronicDiseasesPeoples::find()->where(['peopleId' => $model->peopleId])->all(); 
+
+                            foreach($findRes as $f){
+                                $chronicDiseasesName = chronicDiseases::find()->where(['chronicDiseasesId' => $f['chronicDiseasesId']])->all();
+                                echo '<li>'.$chronicDiseasesName[0]['chronicDiseasesName'].'</li>';
+                            }          
+                    ?>
+                    </ul>
+            </div> 
+                </div> 
+            </div>
+                 </div>
+    </div>    
     
     <h1><?php// Html::encode($this->title) ?></h1>
 
