@@ -12,7 +12,7 @@ use app\models\chronicDiseases;
 /* @var $model app\models\Peoples */
 
 $this->title = $model->peopleFIO;
-$this->params['breadcrumbs'][] = ['label' => 'Peoples', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Люди', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 

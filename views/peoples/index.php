@@ -39,20 +39,21 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'peopleWorking',
                 'value' => 'peopleWorking0.workingName',
             ],
-            'peopleFluNumber',
-            'peopleFluDate',
             [
-                'attribute' => 'peopleFluResult',
+                'attribute' => 'fluInfo',
                 'format' => 'raw',
-                'value' => function($data){ 
+                'value' => function($data){
+                
                     $res = "";
                     if($data->peopleFluResult == 0){
                         $res = '<span class="label label-danger">Патология</span>';
                     }else{
                         $res = '<span class="label label-success">Норма</span>';
-                    }
-                    
-                    return $res; 
+                    }                
+                
+                    return $data->peopleFluNumber."<br/>"
+                        .date('d.m.Y', strtotime($data->peopleFluDate))."<br/>"
+                        .$res;
                 }
             ],
             // 'peopleFluTerm',

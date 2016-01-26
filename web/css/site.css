@@ -153,3 +153,15 @@ a.desc:after {
 .grafts li{
     margin: 3px 0px 0px 6px;
 }
+.peopleBlock{
+    height: 300px;
+}
+.findBlock{
+    height: 300px;
+}
+.illBlock,
+.graftBlock,
+.workBlock,
+.streetBlock{
+    height: 140px;
+}
