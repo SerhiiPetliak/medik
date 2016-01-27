@@ -21,11 +21,15 @@ AppAsset::register($this);
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-<body>
+<body class="<?php echo ($this->title == 'ІС медичного контролю') ? 'mainpage':'';?>">
 <?php $this->beginBody() ?>
 
 <div class="wrap">
+    
     <?php
+    if($this->title == 'ІС медичного контролю'){
+        echo "<h1 class='mainTitle'>ІС медичного контролю</h1>";
+    }else{
     NavBar::begin([
         'brandLabel' => 'ІС медичного контролю',
         'brandUrl' => Yii::$app->homeUrl,
@@ -51,6 +55,8 @@ AppAsset::register($this);
         ],
     ]);
     NavBar::end();
+    
+    }
     ?>
 
     <div class="container">
