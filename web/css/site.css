@@ -104,7 +104,7 @@ a.desc:after {
 }
 .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
     color: #FFF;
-    background-color: #366FA5;
+    background-color: #366FA5; 
 }
 .navbar-inverse .navbar-nav > li > a {
     color: #fff;

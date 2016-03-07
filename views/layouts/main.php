@@ -43,7 +43,8 @@ AppAsset::register($this);
             ['label' => 'Люди', 'url' => ['/peoples'],
                 'items' =>[
                     ['label' => 'Просмотр', 'url' => ['/peoples']],
-                    ['label' => 'Добавление', 'url' => ['/peoples/create']]                
+                    ['label' => 'Добавление', 'url' => ['/peoples/create']],
+                    ['label' => 'Печать списков', 'url' => ['/peoples/pprint']]
                 ]                
             ],
             ['label' => 'Улицы', 'url' => ['/streets']],
@@ -51,7 +52,7 @@ AppAsset::register($this);
             ['label' => 'Прививки', 'url' => ['/grafts']],
             ['label' => 'Болезни', 'url' => ['/chronic_diseases']],
             ['label' => 'Поиск по дате', 'url' => ['/peoples/flu']],
-            
+            ['label' => 'Зберегти БД', 'url' => ['/peoples/backup']],
         ],
     ]);
     NavBar::end();

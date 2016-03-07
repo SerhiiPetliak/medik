@@ -19,6 +19,9 @@ $this->title = 'ІС медичного контролю';
                                 <a href="http://medik/web/index.php?r=peoples">
                                     <i class="glyphicon glyphicon-search"></i>
                                 </a>
+                                <a href="http://medik/web/index.php?r=peoples/pprint">
+                                    <i class="glyphicon glyphicon-print"></i>
+                                </a>
                             </p>
 			</div>
 		</div>
@@ -96,5 +99,6 @@ $this->title = 'ІС медичного контролю';
                             <a href="http://medik/web/index.php?r=peoples/flu" class="strLink">Поиск</a>                           
 			</div>
 		</div>
+            
 	</div>
 </div>
