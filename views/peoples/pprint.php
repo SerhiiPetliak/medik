@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\PeoplesSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Поиск по дате';
+$this->title = 'Друк';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="peoples-index">

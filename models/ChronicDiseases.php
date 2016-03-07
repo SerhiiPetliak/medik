@@ -39,8 +39,8 @@ class ChronicDiseases extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'chronicDiseasesId' => 'Chronic Diseases ID',
-            'chronicDiseasesName' => 'Chronic Diseases Name',
+            'chronicDiseasesId' => 'ID',
+            'chronicDiseasesName' => 'Назва',
         ];
     }
 

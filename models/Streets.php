@@ -39,8 +39,8 @@ class Streets extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'streetId' => 'Street ID',
-            'streetName' => 'Название улицы',
+            'streetId' => 'ID',
+            'streetName' => 'Назва',
         ];
     }
 

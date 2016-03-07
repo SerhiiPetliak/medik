@@ -50,8 +50,8 @@ $this->params['breadcrumbs'][] = $this->title;
             	</ul>
                   
                   <p>
-			        <?= Html::a('Редактировать', ['update', 'id' => $model->peopleId], ['class' => 'btn btn-primary']) ?>
-			        <?= Html::a('Удалить', ['delete', 'id' => $model->peopleId], [
+			        <?= Html::a('Редагувати', ['update', 'id' => $model->peopleId], ['class' => 'btn btn-primary']) ?>
+			        <?= Html::a('Видалити', ['delete', 'id' => $model->peopleId], [
 			            'class' => 'btn btn-danger',
 			            'data' => [
 			                'confirm' => 'Are you sure you want to delete this item?',

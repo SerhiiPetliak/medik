@@ -31,7 +31,7 @@ $this->title = 'ІС медичного контролю';
                                 <a href="http://medik/web/index.php?r=streets">
                                     <i class="glyphicon glyphicon-home"></i>
                                 </a>
-                            <a href="http://medik/web/index.php?r=streets" class="strLink">Улицы</a>
+                            <a href="http://medik/web/index.php?r=streets" class="strLink">Вулиці</a>
                             <p class="mpTools">
                                 <a href="http://medik/web/index.php?r=streets/create">
                                     <i class="glyphicon glyphicon-plus-sign"></i>
@@ -47,7 +47,7 @@ $this->title = 'ІС медичного контролю';
                                 <a href="http://medik/web/index.php?r=working">
                                     <i class="glyphicon glyphicon-cog"></i>
                                 </a> 
-                                    <a href="http://medik/web/index.php?r=working" class="strLink">Места работы</a>
+                                    <a href="http://medik/web/index.php?r=working" class="strLink">Місця роботи</a>
                                     <p class="mpTools">
                                 <a href="http://medik/web/index.php?r=working/create">
                                     <i class="glyphicon glyphicon-plus-sign"></i>
@@ -63,7 +63,7 @@ $this->title = 'ІС медичного контролю';
                                 <a href="http://medik/web/index.php?r=grafts">
                                     <i class="glyphicon glyphicon-check"></i>
                                 </a>
-                                    <a href="http://medik/web/index.php?r=grafts" class="strLink">Прививки</a>
+                                    <a href="http://medik/web/index.php?r=grafts" class="strLink">Щеплення</a>
                                     <p class="mpTools">
                                 <a href="http://medik/web/index.php?r=grafts/create">
                                     <i class="glyphicon glyphicon-plus-sign"></i>
@@ -79,7 +79,7 @@ $this->title = 'ІС медичного контролю';
                                 <a href="http://medik/web/index.php?r=chronic_diseases">
                                     <i class="glyphicon glyphicon-exclamation-sign"></i>
                                 </a>
-                                    <a href="http://medik/web/index.php?r=chronic_diseases" class="strLink">Болезни</a>
+                                    <a href="http://medik/web/index.php?r=chronic_diseases" class="strLink">Захворювання</a>
                                     <p class="mpTools">
                                 <a href="http://medik/web/index.php?r=chronic_diseases/create">
                                     <i class="glyphicon glyphicon-plus-sign"></i>
@@ -96,7 +96,7 @@ $this->title = 'ІС медичного контролю';
                             <a href="http://medik/web/index.php?r=peoples/flu">
                                 <i class="bs glyphicon glyphicon-search"></i>
                             </a>
-                            <a href="http://medik/web/index.php?r=peoples/flu" class="strLink">Поиск</a>                           
+                            <a href="http://medik/web/index.php?r=peoples/flu" class="strLink">Пошук</a>                           
 			</div>
 		</div>
             

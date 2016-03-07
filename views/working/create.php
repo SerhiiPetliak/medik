@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Working */
 
-$this->title = 'Create Working';
-$this->params['breadcrumbs'][] = ['label' => 'Workings', 'url' => ['index']];
+$this->title = 'Додати';
+$this->params['breadcrumbs'][] = ['label' => 'Місця роботи/навчання', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="working-create">

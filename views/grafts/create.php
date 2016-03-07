@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Grafts */
 
-$this->title = 'Create Grafts';
-$this->params['breadcrumbs'][] = ['label' => 'Grafts', 'url' => ['index']];
+$this->title = 'Додати щеплення';
+$this->params['breadcrumbs'][] = ['label' => 'Щеплення', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="grafts-create">

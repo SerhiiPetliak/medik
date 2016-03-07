@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\GraftsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Grafts';
+$this->title = 'Щеплення';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="grafts-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Grafts', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Додати щеплення', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([

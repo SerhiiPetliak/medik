@@ -46,7 +46,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 
                     $res = "";
                     if($data->peopleFluResult == 0){
-                        $res = '<span class="label label-danger">Патология</span>';
+                        $res = '<span class="label label-danger">Патологія</span>';
                     }else{
                         $res = '<span class="label label-success">Норма</span>';
                     }                

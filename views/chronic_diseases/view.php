@@ -6,8 +6,8 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\ChronicDiseases */
 
-$this->title = $model->chronicDiseasesId;
-$this->params['breadcrumbs'][] = ['label' => 'Chronic Diseases', 'url' => ['index']];
+$this->title = $model->chronicDiseasesName;
+$this->params['breadcrumbs'][] = ['label' => 'Захворювання', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="chronic-diseases-view">
@@ -15,8 +15,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->chronicDiseasesId], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->chronicDiseasesId], [
+        <?= Html::a('Редагувати', ['update', 'id' => $model->chronicDiseasesId], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Видалити', ['delete', 'id' => $model->chronicDiseasesId], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',

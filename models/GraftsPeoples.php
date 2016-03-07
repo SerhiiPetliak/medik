@@ -40,8 +40,8 @@ class GraftsPeoples extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'graftId' => 'Graft ID',
-            'peopleId' => 'People ID',
+            'graftId' => 'ID',
+            'peopleId' => 'ID людини',
         ];
     }
 

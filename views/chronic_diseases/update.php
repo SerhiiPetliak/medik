@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\ChronicDiseases */
 
-$this->title = 'Update Chronic Diseases: ' . ' ' . $model->chronicDiseasesId;
-$this->params['breadcrumbs'][] = ['label' => 'Chronic Diseases', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->chronicDiseasesId, 'url' => ['view', 'id' => $model->chronicDiseasesId]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->title = 'Редагувати захворювання: ' . ' ' . $model->chronicDiseasesName;
+$this->params['breadcrumbs'][] = ['label' => 'Захворювання', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => $model->chronicDiseasesName, 'url' => ['view', 'id' => $model->chronicDiseasesId]];
+$this->params['breadcrumbs'][] = 'Редагувати';
 ?>
 <div class="chronic-diseases-update">
 

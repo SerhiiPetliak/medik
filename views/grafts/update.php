@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Grafts */
 
-$this->title = 'Update Grafts: ' . ' ' . $model->graftId;
-$this->params['breadcrumbs'][] = ['label' => 'Grafts', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->graftId, 'url' => ['view', 'id' => $model->graftId]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->title = 'Редагувати щеплення: ' . ' ' . $model->graftName;
+$this->params['breadcrumbs'][] = ['label' => 'Щеплення', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => $model->graftName, 'url' => ['view', 'id' => $model->graftId]];
+$this->params['breadcrumbs'][] = 'Редагувати';
 ?>
 <div class="grafts-update">
 

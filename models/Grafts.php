@@ -39,8 +39,8 @@ class Grafts extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'graftId' => 'Graft ID',
-            'graftName' => 'Graft Name',
+            'graftId' => 'ID',
+            'graftName' => 'Назва',
         ];
     }
 

@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Streets */
 
-$this->title = 'Update Streets: ' . ' ' . $model->streetId;
-$this->params['breadcrumbs'][] = ['label' => 'Streets', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->streetId, 'url' => ['view', 'id' => $model->streetId]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->title = 'Редагувати: ' . ' ' . $model->streetName;
+$this->params['breadcrumbs'][] = ['label' => 'Вулиці', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => $model->streetName, 'url' => ['view', 'id' => $model->streetId]];
+$this->params['breadcrumbs'][] = 'Редагувати';
 ?>
 <div class="streets-update">
 

@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\ChronicDiseases */
 
-$this->title = 'Create Chronic Diseases';
-$this->params['breadcrumbs'][] = ['label' => 'Chronic Diseases', 'url' => ['index']];
+$this->title = 'Додати захворювання';
+$this->params['breadcrumbs'][] = ['label' => 'Захворювання', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="chronic-diseases-create">

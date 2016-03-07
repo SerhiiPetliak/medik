@@ -57,19 +57,19 @@ class Peoples extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'peopleId' => 'People ID',
-            'peopleFIO' => 'Ф.И.О',
-            'peopleBirthday' => 'Дата рождения',
-            'peopleWorking' => 'Место работы',
+            'peopleId' => 'ID',
+            'peopleFIO' => 'П.І.Б',
+            'peopleBirthday' => 'Дата народження',
+            'peopleWorking' => 'Місце роботи',
             'peopleFluNumber' => 'Номер флюорографии',
             'peopleFluDate' => 'Дата проведения фл.',
             'peopleFluResult' => 'Результат фл.',
-            'peopleFluTerm' => 'People Flu Term',
-            'peopleStreet' => 'Улица',
-            'graft' => 'Прививки',
-            'chronic' => 'Заболевания',
-            'peopleAdress' => 'Дом №',
-            'fluInfo' => 'Флюорография'
+            'peopleFluTerm' => 'Років тому зроблена флюорографія',
+            'peopleStreet' => 'Вулиця',
+            'graft' => 'Щеплення',
+            'chronic' => 'Хвороби',
+            'peopleAdress' => 'Будинок №',
+            'fluInfo' => 'Флюорографія'
         ];
     }
 

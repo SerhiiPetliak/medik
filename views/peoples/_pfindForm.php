@@ -16,7 +16,7 @@ use app\models\Streets;
     <?php $form = ActiveForm::begin(); ?>
 
     <?php
-        echo Html::label("Улица");
+        echo Html::label("Вулиця");
         echo Select2::widget([
             'model' => $model,
             'attribute' => 'streetId',
@@ -26,7 +26,7 @@ use app\models\Streets;
     ?>
     <br/>
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Поиск' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'Пошук' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

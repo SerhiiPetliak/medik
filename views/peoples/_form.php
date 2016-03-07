@@ -40,7 +40,7 @@ use app\models\streets;
 ]);?>
 
     <?php
-        echo Html::label("Место работы/учебы");
+        echo Html::label("Місце роботи/навчання");
         echo Select2::widget([
             'model' => $model,
             'attribute' => 'peopleWorking',
@@ -65,19 +65,19 @@ use app\models\streets;
 ]);?>
 
     <?php
-        echo Html::label("Результат флюорографии");
+        echo Html::label("Результат флюорографії");
         echo Select2::widget([
             'model' => $model,
             'attribute' => 'peopleFluResult',
             'language' => 'ru',
-            'data' => [0 => "Патология", 1 => "Норма"]
+            'data' => [0 => "Патологія", 1 => "Норма"]
         ]);        
     ?>
 
     <?= $form->field($model, 'peopleFluTerm')->hiddenInput()->label(false) ?>
     
         <?php
-        echo Html::label("Улица");
+        echo Html::label("Вулиця");
         echo Select2::widget([
             'model' => $model,
             'attribute' => 'peopleStreet',
@@ -89,7 +89,7 @@ use app\models\streets;
     <?= $form->field($model, 'peopleAdress')->textInput() ?>
     
     <?php
-        echo Html::label("Прививки");
+        echo Html::label("Щеплення");
         echo Select2::widget([
             'model' => $model,
             'attribute' => 'graft',
@@ -100,7 +100,7 @@ use app\models\streets;
     ?>
     
     <?php
-        echo Html::label("Заболевания");
+        echo Html::label("Хвороби");
         echo Select2::widget([
             'model' => $model,
             'attribute' => 'chronic',
@@ -112,7 +112,7 @@ use app\models\streets;
 
     <div class="form-group">
         <br>
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'Додати' : 'Редагувати', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

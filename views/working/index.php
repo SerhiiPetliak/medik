@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\WorkingSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Workings';
+$this->title = 'Місця роботи/навчання';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="working-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Working', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Додати', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([

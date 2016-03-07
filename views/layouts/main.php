@@ -42,16 +42,16 @@ AppAsset::register($this);
         'items' => [
             ['label' => 'Люди', 'url' => ['/peoples'],
                 'items' =>[
-                    ['label' => 'Просмотр', 'url' => ['/peoples']],
-                    ['label' => 'Добавление', 'url' => ['/peoples/create']],
-                    ['label' => 'Печать списков', 'url' => ['/peoples/pprint']]
+                    ['label' => 'Перегляд', 'url' => ['/peoples']],
+                    ['label' => 'Додавання', 'url' => ['/peoples/create']],
+                    ['label' => 'Друк', 'url' => ['/peoples/pprint']]
                 ]                
             ],
-            ['label' => 'Улицы', 'url' => ['/streets']],
-            ['label' => 'Места работы', 'url' => ['/working']],
-            ['label' => 'Прививки', 'url' => ['/grafts']],
-            ['label' => 'Болезни', 'url' => ['/chronic_diseases']],
-            ['label' => 'Поиск по дате', 'url' => ['/peoples/flu']],
+            ['label' => 'Вулиці', 'url' => ['/streets']],
+            ['label' => 'Місця роботи', 'url' => ['/working']],
+            ['label' => 'Щеплення', 'url' => ['/grafts']],
+            ['label' => 'Захворювання', 'url' => ['/chronic_diseases']],
+            ['label' => 'Пошук за датою', 'url' => ['/peoples/flu']],
             ['label' => 'Зберегти БД', 'url' => ['/peoples/backup']],
         ],
     ]);

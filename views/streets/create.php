@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Streets */
 
-$this->title = 'Create Streets';
-$this->params['breadcrumbs'][] = ['label' => 'Streets', 'url' => ['index']];
+$this->title = 'Додати вулицю';
+$this->params['breadcrumbs'][] = ['label' => 'Вулиці', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="streets-create">

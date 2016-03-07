@@ -8,7 +8,7 @@ use app\models\Streets;
 /* @var $searchModel app\models\PeoplesSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Поиск по дате';
+$this->title = 'Пошук за датою';
 $this->params['breadcrumbs'][] = $this->title;
 
 function findStreet($id){
@@ -26,9 +26,9 @@ function findStreet($id){
 
     <table class="table table-striped table-bordered">
         <tr>
-            <td>ФИО</td>
-            <td>Улица, дом</td>
-            <td>Дата флюры</td>
+            <td><strong>П.І.Б.</strong></td>
+            <td><strong>Адреса проживання</strong></td>
+            <td><strong>Дата флюроографії</strong></td>
         </tr>
     <?php    
         foreach($dt as $d){
@@ -42,7 +42,7 @@ function findStreet($id){
         }
     ?>
     </table>
-    <button class="button button-success peoples-print-button" onclick="window.print();">Print</button>
+    <button class="button button-success peoples-print-button" onclick="window.print();">Друк</button>
     
 
     

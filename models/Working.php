@@ -39,8 +39,8 @@ class Working extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'workingId' => 'Working ID',
-            'workingName' => 'Working Name',
+            'workingId' => 'ID',
+            'workingName' => 'Назва',
         ];
     }
 
